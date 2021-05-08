@@ -59,5 +59,5 @@ uint32_t int_sqrt(uint32_t number) {
 		i++;
 	}
 	
-	return i -1;
+	return i - 1;
 }

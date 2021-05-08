@@ -54,6 +54,8 @@ void find_prime() {
 
 	last -> next = new;
 	last = new;
+
+	return;
 }
 
 bool isprime(uint32_t number) {
