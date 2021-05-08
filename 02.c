@@ -25,7 +25,7 @@ int main() {
 	uint32_t current = 2;
 	
 	while(current <= 4000000) {
-		if(current % 2 == 0) sum += current;
+		sum += current % 2 ? 0 : current;
 		
 		two_back = one_back;
 		one_back = current;

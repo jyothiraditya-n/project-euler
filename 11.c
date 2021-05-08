@@ -77,7 +77,8 @@ int main() {
 	
 	uint32_t greatest = 0;
 	
-	for(uint8_t i = 0; i <= 16; i++) for(uint8_t j = 0; j < 20; j++)
+	for(uint8_t i = 0; i <= 16; i++)
+		for(uint8_t j = 0; j < 20; j++)
 	{
 		uint32_t product = grid[i][j] * grid[i + 1][j] * grid[i + 2][j]
 			* grid[i + 3][j];
@@ -85,7 +86,8 @@ int main() {
 		if(product > greatest) greatest = product;
 	}
 	
-	for(uint8_t i = 0; i < 20; i++) for(uint8_t j = 0; j <= 16; j++)
+	for(uint8_t i = 0; i < 20; i++)
+		for(uint8_t j = 0; j <= 16; j++)
 	{
 		uint32_t product = grid[i][j] * grid[i][j + 1] * grid[i][j + 2]
 			* grid[i][j + 3];
@@ -93,14 +95,18 @@ int main() {
 		if(product > greatest) greatest = product;
 	}
 	
-	for(uint8_t i = 0; i <= 16; i++) for(uint8_t j = 0; j <= 16; j++) {
+	for(uint8_t i = 0; i <= 16; i++)
+		for(uint8_t j = 0; j <= 16; j++)
+	{
 		uint32_t product = grid[i][j] * grid[i + 1][j + 1]
 			* grid[i + 2][j + 2] * grid[i + 3][j + 3];
 		
 		if(product > greatest) greatest = product;
 	}
 	
-	for(uint8_t i = 3; i < 20; i++) for(uint8_t j = 0; j <= 16; j++) {
+	for(uint8_t i = 3; i < 20; i++)
+		for(uint8_t j = 0; j <= 16; j++)
+	{
 		uint32_t product = grid[i][j] * grid[i - 1][j + 1]
 			* grid[i - 2][j + 2] * grid[i - 3][j + 3];
 		

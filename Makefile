@@ -4,10 +4,12 @@ winprogs = $(patsubst %.c,%.exe,$(wildcard *.c))
 current_progs = $(foreach prog,$(progs) $(winprogs),$(wildcard $(prog)))
 CLEAN = $(foreach prog,$(current_progs),rm $(prog);)
 
+RUN = $(foreach prog,$(progs),./$(prog); echo;)
+
 CC = gcc
 CFLAGS = -std=c99 -Wall -Wextra -Werror -O2
 
-WINCC = x86_64-w64-mingw32-gcc-win32
+WINCC = x86_64-w64-mingw32-gcc
 WINCFLAGS = $(CFLAGS) -D__USE_MINGW_ANSI_STDIO=1
 
 $(progs) : % : %.c
@@ -18,9 +20,14 @@ $(winprogs) : %.exe : %.c
 
 .DEFAULT_GOAL = all
 
-.PHONY: all clean
+.PHONY : all all-win run clean
 
-all: $(progs) $(winprogs)
+all : $(progs)
 
-clean: 
+all-win : $(winprogs)
+
+run : $(progs)
+	$(RUN)
+
+clean : 
 	$(CLEAN)

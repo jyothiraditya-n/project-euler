@@ -16,8 +16,12 @@ int main() {
 	
 	uint32_t sum = 0;
 
-	for(uint16_t i = 1; i < 1000; i++) {
-		if(i % 3 == 0 || i % 5 == 0) sum += i;
+	for(uint16_t i = 3; i < 1000; i += 3) {
+		sum += i % 5 ? i : 0;
+	}
+
+	for(uint16_t i = 5; i < 1000; i += 5) {
+		sum += i;
 	}
 	
 	printf("Solution: %" PRIu32 "\n", sum);

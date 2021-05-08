@@ -21,26 +21,26 @@ int main() {
 	
 	uint32_t highest = 0;
 	
-	for(uint16_t i = 999; i > 99; i--) {
-		for(uint16_t j = 999; j >= i; j--) {
-			product = i * j;
+	for(uint16_t i = 999; i > 99; i--)
+		for(uint16_t j = 999; j >= i; j--)
+	{
+		product = i * j;
+		
+		if(product <= highest) continue;
+		
+		sprintf(prodstr, "%" PRIu32, product);
+		
+		uint8_t start = 0;
+		size_t end = strlen(prodstr) - 1;
+		
+		while(end > start) {
+			if(prodstr[start] != prodstr[end]) break;
 			
-			if(product <= highest) continue;
-			
-			sprintf(prodstr, "%" PRIu32, product);
-			
-			uint8_t k = 0;
-			size_t l = strlen(prodstr) - 1;
-			
-			while(l > k) {
-				if(prodstr[k] != prodstr[l]) break;
-				
-				k++;
-				l--;
-			}
-			
-			if(k >= l) highest = product;
+			start++;
+			end--;
 		}
+		
+		if(start >= end) highest = product;
 	}
 	
 	printf("Solution: %" PRIu32 "\n", highest);
