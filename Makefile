@@ -1,16 +1,19 @@
 progs = $(patsubst %.c,%,$(wildcard *.c))
 winprogs = $(patsubst %.c,%.exe,$(wildcard *.c))
 
+questions = $(patsubst %.c,%.html,$(wildcard *.c))
+answers = $(patsubst %.c,%.txt,$(wildcard *.c))
+
 current_progs = $(foreach prog,$(progs) $(winprogs),$(wildcard $(prog)))
 CLEAN = $(foreach prog,$(current_progs),rm $(prog);)
 
-RUN = $(foreach prog,$(progs),./$(prog); echo;)
+CC ?= gcc
+CFLAGS += -std=c99 -Wall -Wextra -Werror -O3
 
-CC = gcc
-CFLAGS = -std=c99 -Wall -Wextra -Werror -O2
+WINCC ?= x86_64-w64-mingw32-gcc
+WINCFLAGS += $(CFLAGS) -D__USE_MINGW_ANSI_STDIO=1
 
-WINCC = x86_64-w64-mingw32-gcc
-WINCFLAGS = $(CFLAGS) -D__USE_MINGW_ANSI_STDIO=1
+CURL ?= curl
 
 $(progs) : % : %.c
 	$(CC) $(CFLAGS) $< -o $@
@@ -18,16 +21,18 @@ $(progs) : % : %.c
 $(winprogs) : %.exe : %.c
 	$(WINCC) $(WINCFLAGS) $< -o $@
 
-.DEFAULT_GOAL = all
+$(questions) : %.html :
+	$(CURL) https://projecteuler.net/minimal=$* > $@
 
+$(answers) : %.txt : %
+	./$< > $@
+
+.DEFAULT_GOAL = all
 .PHONY : all all-win run clean
 
-all : $(progs)
+all : $(progs) $(questions) $(answers)
 
-all-win : $(winprogs)
-
-run : $(progs)
-	$(RUN)
+all-win : $(all) $(winprogs)
 
 clean : 
 	$(CLEAN)
