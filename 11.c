@@ -1,3 +1,5 @@
+/* Jyothiraditya Nellakra's Solutions to Project Euler Questions */
+
 #include <inttypes.h>
 #include <stdio.h>
 	
