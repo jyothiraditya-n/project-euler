@@ -8,7 +8,7 @@ current_progs = $(foreach prog,$(progs) $(winprogs),$(wildcard $(prog)))
 CLEAN = $(foreach prog,$(current_progs),rm $(prog);)
 
 CC ?= gcc
-CFLAGS += -std=c99 -Wall -Wextra -Werror -O3
+CFLAGS += -std=c99 -Wall -Wextra -Werror -Ofast
 
 WINCC ?= x86_64-w64-mingw32-gcc
 WINCFLAGS += $(CFLAGS) -D__USE_MINGW_ANSI_STDIO=1
