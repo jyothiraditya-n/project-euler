@@ -1,3 +1,5 @@
+/* Jyothiraditya Nellakra's Solutions to Project Euler Questions */
+
 #include <inttypes.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -8,7 +10,7 @@ typedef struct { int64_t prime; int64_t power; } factor_t;
 typedef struct _node_s {
 	struct _node_s *next;
 	factor_t divs[31];
-	
+
 } node_t;
 
 node_t first;
