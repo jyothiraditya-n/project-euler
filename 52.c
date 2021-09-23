@@ -32,4 +32,5 @@ int main() {
 	int64_t num;
 	for(num = 1; !compare_all(num); load_a(++num));
 	printf("%" PRId64 "\n", num);
+	return 0;
 }

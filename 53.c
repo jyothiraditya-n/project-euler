@@ -22,4 +22,5 @@ int main() {
 	}
 
 	printf("%" PRId64 "\n", count);
+	return 0;
 }

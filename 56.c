@@ -34,4 +34,5 @@ int main() {
 	}
 
 	printf("%" PRId64 "\n", max);
+	return 0;
 }

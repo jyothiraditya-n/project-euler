@@ -32,4 +32,5 @@ int main() {
 
 	for(int64_t i = 9; i >= 0; i--) printf("%" PRId64 "", digits[i]);
 	putchar('\n');
+	return 0;
 }

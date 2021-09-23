@@ -25,4 +25,5 @@ int main() {
 	int64_t prod = 1;
 	for(int64_t i = 0; i <= 6; i++) prod *= get_digit(ten_pow(i));
 	printf("%" PRId64 "\n", prod);
+	return 0;
 }

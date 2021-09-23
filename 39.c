@@ -41,4 +41,5 @@ int main() {
 		if(tris[i] > max) { max = tris[i]; max_i = i; }
 
 	printf("%" PRId64 "\n", max_i);
+	return 0;
 }
